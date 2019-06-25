@@ -1,9 +1,5 @@
 <?php
-/**
- * User: BalaMG
- * Date: 05-08-2018
- * Time: PM 10:28
- */
+
 function clean($string) {
 
     $string = str_replace(' ', '', $string); // Replaces all blank spaces.
@@ -12,7 +8,6 @@ function clean($string) {
 
   return preg_replace('/[^A-Za-z\-]/', '', $string); // Removes special chars and numbers.
 }
-
 if($_POST['action']=="jai"){
     $name1=$_POST['a1'];
     $name2= $_POST['a2'];
@@ -25,6 +20,14 @@ if($_POST['action']=="jai"){
     $counter=count($unq);
     $values=array('Friends','Lovers','Affection','Marriage','Enemy','Siblings','Sorry no input found');
   function outs($result,$val1,$val2,$imgs){
+      //Something to write to txt log
+      $log="User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
+          "user: ".$val1.PHP_EOL.
+          "cursh: ".$val2.PHP_EOL.
+          "result:".$result.PHP_EOL.
+          "-------------------------------".PHP_EOL;
+//Save string to log, use FILE_APPEND to append.
+      file_put_contents('log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
     echo $val1.' '.'<img src="'.$imgs.'" width="50px"/>'.' '.$val2.'</br></br><u><b>'.$result.'</b></u>';
     //log it
     echo "<script>
@@ -66,11 +69,5 @@ elseif(in_array($counter,array(1))){
 else{
         echo $values[6];
     }
-    //Something to write to txt log
-    $log="User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
-        "user: ".$name1.PHP_EOL.
-        "cursh: ".$name2.PHP_EOL.
-        "-------------------------------".PHP_EOL;
-//Save string to log, use FILE_APPEND to append.
-    file_put_contents('log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
+
 }
