@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flames</title>
+    <link rel="icon" href="img/icon.png" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="modal fade" id="success" data-backdrop="static" data-keyboard="false" tabindex="-1" >
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 class="text-center" id="result"> </h3>
+            <br/>
+                <center>
+                    <button type="button" class="btn btn-success" id="cl" data-dismiss="modal">Lets go again!</button>
+                </center>
+        </div></div></div></div>
+<!--success modal fade  end-->
+
+<div class="mx-auto" style="width: 350px;">
+    <h2 style="padding-left: 40px;padding-top: 20px;"><img src="img/icon.png" width="50px"/> Flames Game</h2>
+    <!--flames form-->
+    <form class="form-horizontal" style="padding-left: 20px;padding-top: 20px;" id="couple">
+        <div class="form-group">
+            <label>Your name</label>
+            <input type="text" class="form-control" name="a1" id="a1" placeholder="your name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Crush name</label>
+            <input type="text" class="form-control" name="a2" id="a2" placeholder="your couple name" required>
+        </div>
+        <div class="form-group">
+        <button id="sub" class="btn btn-success" type="submit">let's go</button>
+        </div>
+    </form><br/>
+    <!--/.flames form-->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+    $(function () {
+    $('#sub').on('click',function (e) {
+        e.preventDefault();
+        let a1 = $('#a1').val();
+        let a2 = $('#a2').val();
+        if (a1 === '' || a2 === '') {
+            alert('Fill required fields')
+        }//if
+        else {
+        $.post('backend/back.php', {action: "jai", a1: a1, a2: a2}, function (data) {
+            $('#result').html(data);
+			$('#a2').val('');
+        });
+    }//else
+    });
+    });
+</script>
+</body>
+</html>
