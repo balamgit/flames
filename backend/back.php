@@ -21,7 +21,7 @@ if($_POST['action']=="jai"){
     $values=array('Friends','Lovers','Affection','Marriage','Enemy','Siblings','Sorry no input found');
   function outs($result,$val1,$val2,$imgs){
       //Something to write to txt log
-      $log="IP_ADDRESS: ".$_SERVER['REMOTE_ADDR'].' - '.date("d-m-Y").PHP_EOL.
+      $log="IP_ADDRESS: ".$_SERVER['REMOTE_ADDR'].' - '.date("d-m-Y").$_POST['timess'].PHP_EOL.
           "user: ".$val1.PHP_EOL.
           "cursh: ".$val2.PHP_EOL.
           "result:".$result.PHP_EOL.

@@ -49,13 +49,32 @@
     $(function () {
     $('#sub').on('click',function (e) {
         e.preventDefault();
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+
+        var suffix = "AM";
+
+        if (hours >= 12) {
+            suffix = "PM";
+            hours = hours - 12;
+        }
+
+        if (hours == 0) {
+            hours = 12;
+        }
+
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+       var timess=hours + ":" + minutes + " " + suffix;
         let a1 = $('#a1').val();
         let a2 = $('#a2').val();
         if (a1 === '' || a2 === '') {
             alert('Fill required fields')
         }//if
         else {
-        $.post('backend/back.php', {action: "jai", a1: a1, a2: a2}, function (data) {
+        $.post('backend/back.php', {action: "jai", a1: a1, a2: a2,timess:timess}, function (data) {
             $('#result').html(data);
 			$('#a2').val('');
         });
