@@ -23,23 +23,26 @@
         </div></div></div></div>
 <!--success modal fade  end-->
 
-<div class="mx-auto" style="width: 350px;">
+<div class="col-12 col-sm-12 col-md-3 col-lg-3 mx-auto">
     <h2 style="padding-left: 40px;padding-top: 20px;"><img src="img/icon.png" width="50px"/> Flames Game</h2>
     <!--flames form-->
-    <form class="form-horizontal" style="padding-left: 20px;padding-top: 20px;" id="couple">
-        <div class="form-group">
-            <label>Your name</label>
-            <input type="text" class="form-control" name="a1" id="a1" placeholder="your name" required>
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <form class="form-horizontal" style="padding-left: 20px;padding-top: 20px;" id="couple">
+                <div class="form-group">
+                    <label>Your name</label>
+                    <input type="text" class="form-control" name="a1" id="a1" placeholder="your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Crush name</label>
+                    <input type="text" class="form-control" name="a2" id="a2" placeholder="your couple name" required>
+                </div>
+                <div class="form-group">
+                    <button id="sub" class="btn btn-success" type="submit">let's go</button>
+                </div>
+            </form><br/>
         </div>
-
-        <div class="form-group">
-            <label>Crush name</label>
-            <input type="text" class="form-control" name="a2" id="a2" placeholder="your couple name" required>
-        </div>
-        <div class="form-group">
-        <button id="sub" class="btn btn-success" type="submit">let's go</button>
-        </div>
-    </form><br/>
+    </div>
     <!--/.flames form-->
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -52,7 +55,6 @@
         var currentTime = new Date();
         var hours = currentTime.getHours();
         var minutes = currentTime.getMinutes();
-
         var suffix = "AM";
         if (hours >= 12) {
             suffix = "PM";
